@@ -189,48 +189,20 @@ class Cosmology(object):
  
 
  	#Get some useful quantities:
-	def d_A(self, z):  
-		""" 
-		Returns the angular diameter distance out to redshift z [Mpc].
-		"""
-		return  self.spline_d_A(z)
-
-	def d_A12(self, z1, z2):  
-		""" 
-		Returns the angular diameter distance between redshift z1 and z2 [Mpc].
-		"""
-		return  self.bkd.angular_diameter_distance2(z1,z2)
-
+ 
 	def f_K(self, z): # [Mpc]
 		""" 
 		Returns the transverse comoving radial distance out to redshift z [Mpc].
 		"""
 		return  self.spline_f_K(z)
 
-	def H_a(self, a): # [km/s/Mpc]
-		""" 
-		Returns the hubble factor at scale factor a=1/(1+z) [km/s/Mpc]. 
-		"""
-		return self.spline_H_z(np.nan_to_num(1./a - 1.))
 
 	def H_z(self, z): # [km/s/Mpc]
 		""" 
 		Returns the hubble factor at redshift z [km/s/Mpc]. 
 		"""
 		return self.spline_H_z(z)
-
-	def H_x(self, x): # [km/s/Mpc] 
-		""" 
-		Returns the hubble factor at conformal distance x (in Mpc) [km/s/Mpc]. 
-		"""
-		return self.spline_H_z(self.spline_z_chi)
-
-	def E_z(self, z): # [unitless]
-		""" 
-		Returns the unitless Hubble expansion rate at redshift z 
-		"""
-		return  self.H_z(z) / self.H0
-
+  
 
 	def D_z_norm(self, z, gamma0=0.55, gammaa=0.):
 		""" 
